@@ -1,0 +1,67 @@
+# simple.world - basic world file example
+# Authors: Richard Vaughan
+# $Id$
+
+include "pioneer.inc"
+include "map.inc"
+
+# time to pause (in GUI mode) or quit (in headless mode (-g)) the simulation
+quit_time 3600 # 1 hour of simulated time
+
+paused 1
+
+resolution 0.033
+
+# configure the GUI window
+window
+(
+  size [ 400 400 ] # in pixels
+  scale 20   		   # pixels per meter
+  center [ -0.019  -0.282 ]
+  rotate [ 0  0 ]
+  			
+  show_data 1              # 1=on 0=off
+)
+
+# load an environment bitmap
+floorplan
+( 
+  name "cave"
+  map_resolution 0.033
+  size [20.000 20.000 0.1] 
+  pose [0 0 0 0]
+  bitmap "bitmaps/primero.png"
+  
+  #bitmap "bitmaps/ghost.png"	
+  color "black"
+  gui_grid 1
+  gui_outline 1
+  boundary 1
+)
+
+
+pioneer2dx
+(		  
+  # can refer to the robot by this name
+  name "r0"
+  pose [ -8 8 0 45 ] 
+	
+  #provides[ "6665:position2d:0" ]
+  # report error-free position in world coordinates
+  localization "gps"
+  localization_origin [ 0 0 0 0 ]
+)
+
+define silly position ( 	
+  size [1.000 1.000 0.500]
+  gui_outline 1
+)
+
+silly( 	
+  name "goal" 
+  pose [8 -5 0 0] 
+  color "blue"  
+  bitmap "bitmaps/ghost.png"
+)
+
+
