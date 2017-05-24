@@ -32,14 +32,14 @@ double** brushfireMap::generate(obstacleMap& map) {
 		}
 		iters++;
 	}
-	for (int k = 0; k < height_; k++) {
-		for (int j = 0; j < width_; j++) {
-			if (j % 5 == 0)
-				printf("BrushFire Map[%d][%d] = %f\n", k, j, map_[k][j]);
-			else
-				printf("BrushFire Map[%d][%d] = %f  ", k, j, map_[k][j]);
-		}
-	}
+//	for (int k = 0; k < height_; k++) {
+//		for (int j = 0; j < width_; j++) {
+//			if (j % 5 == 0)
+//				printf("BrushFire Map[%d][%d] = %f\n", k, j, map_[k][j]);
+//			else
+//				printf("BrushFire Map[%d][%d] = %f  ", k, j, map_[k][j]);
+//		}
+//	}
 	return map_;
 }
 

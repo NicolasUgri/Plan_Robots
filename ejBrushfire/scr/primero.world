@@ -11,6 +11,7 @@ quit_time 3600 # 1 hour of simulated time
 paused 1
 
 resolution 0.033
+#resolution 0.5
 
 # configure the GUI window
 window
@@ -28,6 +29,7 @@ floorplan
 ( 
   name "cave"
   map_resolution 0.033
+  #map_resolution 0.5
   size [20.000 20.000 0.1] 
   pose [0 0 0 0]
   bitmap "bitmaps/primero.png"

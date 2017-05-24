@@ -41,7 +41,7 @@ pioneer2dx
 (		  
   # can refer to the robot by this name
   name "r0"
-  pose [ -8 8 0 45 ] 
+  pose [ -8 2 0 45 ] 
 	
   #provides[ "6665:position2d:0" ]
   # report error-free position in world coordinates

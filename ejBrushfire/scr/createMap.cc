@@ -62,12 +62,12 @@ int** obstacleMap::getMap(playerc_client_t *client) {
 		return 0;
 	}
 
-	  for (int k = 0; k < height_; k++){
-		  for (int j = 0; j < width_; j++){
-			  if (j%400 == 0 && j+k!= 0) printf("%d\n",map_[k][j] );
-			  else printf("%d",map_[k][j] );
-		  }
-	  }
+//	  for (int k = 0; k < height_; k++){
+//		  for (int j = 0; j < width_; j++){
+//			  if (j%400 == 0 && j+k!= 0) printf("%d\n",map_[k][j] );
+//			  else printf("%d",map_[k][j] );
+//		  }
+//	  }
 
 	return map_;
 }

@@ -28,7 +28,7 @@
 								<option id="gnu.cpp.compiler.option.include.paths.1055998524" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/usr/local/include/player-3.0/"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.other.other.1111715335" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 `pkg-config --cflags playerc++`" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.other.other.1111715335" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 `pkg-config --cflags playerc++` -std=c++0x" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1582309503" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1013636470" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug">
@@ -49,7 +49,7 @@
 								<option id="gnu.cpp.link.option.paths.435813703" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/usr/local/lib"/>
 								</option>
-								<option id="gnu.cpp.link.option.flags.1159679202" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="`pkg-config --libs playerc++` -lGL -lGLU -lglut" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.1159679202" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="`pkg-config --libs playerc++` -lGL -lGLU -lglut " valueType="string"/>
 								<option id="gnu.cpp.link.option.other.929263066" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other"/>
 								<option id="gnu.cpp.link.option.userobjs.382906469" name="Other objects" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
 									<listOptionValue builtIn="false" value="/usr/local/lib/libplayerc.so"/>

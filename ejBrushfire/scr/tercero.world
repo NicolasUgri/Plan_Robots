@@ -11,26 +11,31 @@ quit_time 3600 # 1 hour of simulated time
 paused 1
 
 resolution 0.033
+#resolution 0.5
 
 # configure the GUI window
 window
 (
-  size [ 400.000 400.000 ] # in pixels
+  size [ 400 400 ] # in pixels
   scale 20   		   # pixels per meter
   center [ -0.019  -0.282 ]
   rotate [ 0  0 ]
   			
-  show_data 0              # 1=on 0=off
+  show_data 1              # 1=on 0=off
 )
 
 # load an environment bitmap
 floorplan
 ( 
+  name "cave"
   map_resolution 0.033
+  #map_resolution 0.5
   size [20.000 20.000 0.1] 
-  bitmap "bitmaps/obstacle_success8.png"
+  pose [0 0 0 0]
+  bitmap "bitmaps/tercero.png"
+  
   #bitmap "bitmaps/ghost.png"	
-  color "green4"
+  color "black"
   gui_grid 1
   gui_outline 1
   boundary 1
