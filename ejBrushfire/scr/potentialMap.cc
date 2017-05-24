@@ -8,7 +8,6 @@
 #include <stdio.h>
 
 double** potentialMap::generate(distanceMap& dm, brushfireMap& bm) {
-
 	width_ = dm.width();
 	height_ = dm.height();
 
@@ -17,18 +16,15 @@ double** potentialMap::generate(distanceMap& dm, brushfireMap& bm) {
 	for (int i = 0; i < height_; i++) {
 		map_[i] = new double[width_];
 	}
-
 	for (int i = 0; i < height_; i++) {
 		for (int j = 0; j < width_; j++) {
 			//Potential Function as sum of the attractive potential(distance) and the repulsive
 			//potential(the lower brushfire values)
-			map_[i][j]=20*(0.5*pow((dm.map()[i][j]),2))+40000*(pow(1/bm.map()[i][j],3));
+			map_[i][j]=20*(0.5*pow((dm.map()[i][j]),2))+10000*(pow(1/bm.map()[i][j],2.5));
 //			map_[i][j] = 10 * pow(dm.map()[i][j],2) + 10000 * (pow(1 / bm.map()[i][j], 3));
 //			map_[i][j] = 20 * (dm.map()[i][j]) + 1000000 * (pow(1 / bm.map()[i][j], 3));
-
 		}
 	}
-
 	return map_;
 }
 
@@ -38,7 +34,7 @@ vector<pos*> potentialMap::findPath(int i, int j) {
 //	double trayectoY[height_ + width_];
 //	int iter = 0;
 	int tmp_k = i, tmp_l = j;
-
+	int intentos = 0;
 	path_.push_back(new pos(tmp_k, tmp_l));
 
 	while (min_potential != 0) {
@@ -46,7 +42,7 @@ vector<pos*> potentialMap::findPath(int i, int j) {
 			if (k >= 0 && k < height_)
 				for (int l = j - 1; l < j - 1 + 5; l++) {
 					if (l >= 0 && l < width_ && !(k == i && l == j)) {
-						if (map_[k][l] < map_[tmp_k][tmp_l]) {
+						if (map_[k][l] <= map_[tmp_k][tmp_l]) {
 							tmp_k = k;
 							tmp_l = l;
 						}
@@ -56,8 +52,14 @@ vector<pos*> potentialMap::findPath(int i, int j) {
 		path_.push_back(new pos(tmp_k, tmp_l));
 
 		if (min_potential == map_[tmp_k][tmp_l] && tmp_k == i && tmp_l == j) {
+			intentos++;
+			tmp_k++;
+			tmp_l++;
+			if(intentos > 10){
+				intentos = 0;
 			printf("can't move further %d %d\n", tmp_k, tmp_l);
 			break;
+			}
 		} else {
 			i = tmp_k;
 			j = tmp_l;

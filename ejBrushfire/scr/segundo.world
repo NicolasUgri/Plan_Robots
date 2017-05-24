@@ -46,7 +46,7 @@ pioneer2dx
 (		  
   # can refer to the robot by this name
   name "r0"
-  pose [8 -5 0 0] 
+  pose [ -7 5 0 45 ] 
 	
   #provides[ "6665:position2d:0" ]
   # report error-free position in world coordinates
@@ -61,7 +61,7 @@ define silly position (
 
 silly( 	
   name "goal" 
-  pose [ -8 8 0 45 ] 
+  pose [8 -7 0 0] 
   color "blue"  
   bitmap "bitmaps/ghost.png"
 )

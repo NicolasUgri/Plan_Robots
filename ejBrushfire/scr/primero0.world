@@ -32,7 +32,7 @@ floorplan
   #map_resolution 0.5
   size [20.000 20.000 0.1] 
   pose [0 0 0 0]
-  bitmap "bitmaps/tercero.png"
+  bitmap "bitmaps/primero.png"
   
   #bitmap "bitmaps/ghost.png"	
   color "black"
@@ -46,7 +46,7 @@ pioneer2dx
 (		  
   # can refer to the robot by this name
   name "r0"
-  pose [8 -5 0 0] 
+  pose [ -8 8 0 45 ] 
 	
   #provides[ "6665:position2d:0" ]
   # report error-free position in world coordinates
@@ -61,7 +61,7 @@ define silly position (
 
 silly( 	
   name "goal" 
-  pose [ -8 8 0 45 ] 
+  pose [8 -5 0 0] 
   color "blue"  
   bitmap "bitmaps/ghost.png"
 )

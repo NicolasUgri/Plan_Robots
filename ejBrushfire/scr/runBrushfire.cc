@@ -31,13 +31,46 @@ int WindowWidth = 400;
 int metaX = 360;
 int metaY = 100;
 
+int inX = 8;
+int inY = -5;
+
+double scale = 20;
+
+enum Entorno { primero, segundo, tercero, cuarto, quinto };
+
+Entorno mapa = quinto;
+
 int win1, win2, win3, win4;
 bool getHeatMapColor(float value, float *red, float *green, float *blue);
 void init2D(float r, float g, float b);
 void display(void);
 
 void abrirPlayer(){
-	system("player /home/nico/workspace/ejBrushfire/scr/cuarto.cfg");
+
+
+
+	switch(mapa)
+			  {
+			  case primero:
+				  system("player /home/nico/workspace/ejBrushfire/scr/primero.cfg");
+				  break;
+			  case segundo:
+				  system("player /home/nico/workspace/ejBrushfire/scr/segundo.cfg");
+				  break;
+			  case tercero:
+				  system("player /home/nico/workspace/ejBrushfire/scr/tercero.cfg");
+				  break;
+			  case cuarto:
+				  system("player /home/nico/workspace/ejBrushfire/scr/cuartoB.cfg");
+				  break;
+			  case quinto:
+				  system("player /home/nico/workspace/ejBrushfire/scr/quinto.cfg");
+				  break;
+			  default:
+				  system("player /home/nico/workspace/ejBrushfire/scr/success.cfg");
+				  break;
+			  }
+
 
 }
 
@@ -45,27 +78,57 @@ void abrirPlayer(){
 int main(int argc, char **argv) {
 
 	std::thread Player (abrirPlayer);
-	sleep(6);
+	sleep(5);
+	switch(mapa)
+			  {
+			  case primero:
+				  inX = 8;
+				  inY = -5;
+				  break;
+			  case segundo:
+				  inX = 8;
+				  inY = -7;
+				  break;
+			  case tercero:
+				  inX = -8;
+				  inY = 8;
+				  break;
+			  case cuarto:
+				  inX = -8;
+				  inY = -9;
+				  break;
+			  case quinto:
+				  inX = 8;
+				  inY = 9;
+				  break;
+			  default:
+				  inX = 8;
+				  inY = -5;
+				  break;
+			  }
+
+	metaX =  scale * ((scale / 2) + inX);
+	metaY =  scale * ((scale / 2) + inY);
 
 	try {
 		/* Connect to Player server */
-		printf("Creating Player Client\n");
+		printf("Generando cliente de Player\n");
 		playerc_client_t *client = playerc_client_create(NULL, "localhost",
 				6665);
 
 		if (0 != playerc_client_connect(client)) {
-			printf("Error connecting client\n");
+			printf("Error conectando con el cliente\n");
 			return -1;
 		}
 
 		playerc_simulation_t* simproxy = playerc_simulation_create(client, 0);
 		if (simproxy == NULL) {
-			printf("simproxy is NULL\n");
+			printf("simproxy es NULL\n");
 			return 0;
 		}
 
 		if (playerc_simulation_subscribe(simproxy, PLAYERC_OPEN_MODE) != 0) {
-			fprintf(stderr, "Error subscribing: %s\n", playerc_error_str());
+			fprintf(stderr, "Error al suscribirse: %s\n", playerc_error_str());
 			return 0;
 		}
 
@@ -81,6 +144,7 @@ int main(int argc, char **argv) {
 
 
 		//Goal is at co-ordinates 360x100
+		printf("Meta  = %d, %d\n", metaX, metaY);
 		double** dMap = dm.generate(metaX, metaY, om.resolution(), om.width(), om.height());
 		printf("Generated distance Map\n");
 		double** pMap = pm.generate(dm, bm);
@@ -95,7 +159,7 @@ int main(int argc, char **argv) {
 		// Print current robot poseu
 		printf("position2d : %f %f %f\n", position2d->px, position2d->py,
 				position2d->pa);
-		double scale = 20;
+
 		///*
 //		double ipos = abs(position2d->py);
 //		double jpos = abs(position2d->px);
@@ -144,9 +208,9 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
-	int xInit = 100,
+	int xInit = 50,
 		yInit = 600,
-		sep = 500;
+		sep = 430;
 
 	glutInit(&argc, argv);
 	//glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
